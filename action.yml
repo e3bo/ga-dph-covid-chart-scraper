@@ -1,0 +1,12 @@
+name: ga-dph-covid19-dashboard-scraper
+author: Eamon O'Dea
+description: GitHub Action for saving data in interactive graphics on Georgia's DPH Covid Dashboard as a CSV
+
+runs:
+  using: docker
+  image: Dockerfile
+
+branding:
+  icon: arrow-down-circle
+  color: gray-dark
+
