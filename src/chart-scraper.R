@@ -5,17 +5,19 @@ library(xml2)
 library(V8)
 
 ct <- v8()
-addr <- "https://dph.georgia.gov/covid-19-daily-status-report"
-dest <- "report.html"
+#addr <- "https://dph.georgia.gov/covid-19-daily-status-report"
+#dest <- "report.html"
 
-utils::download.file(addr, destfile = dest)
-gout <- system2("grep",
-                args = c("pym.Parent", dest),
-                stdout = TRUE)
+#utils::download.file(addr, destfile = dest)
+#gout <- system2("grep",
+#                args = c("pym.Parent", dest),
+#                stdout = TRUE)
+#ref_gout <- "    var pymParent = new pym.Parent('covid19dashdph', 'https://ga-covid19.ondemand.sas.com/', {'title':'COVID-19 Daily Status Report'});"
 ref_gout <-
   "    var pymParent = new pym.Parent('covid19dashdph', 'https://d20s4vd27d0hk0.cloudfront.net', {'title':'COVID-19 Daily Status Report'});"
-stopifnot(gout == ref_gout)
-dash_url <- str_split(gout, ",")[[1]][2] %>% str_remove_all(" |'")
+#stopifnot(gout == ref_gout)
+# continue using the old dashboard for now
+dash_url <- str_split(ref_gout, ",")[[1]][2] %>% str_remove_all(" |'")
 dest2 <- "dash.html"
 utils::download.file(dash_url, dest2)
 
