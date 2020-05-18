@@ -22,7 +22,7 @@ dest2 <- "dash.html"
 utils::download.file(dash_url, dest2)
 
 dash_page <- dest2 %>% xml2::read_html()
-txt <- xml_find_all(dash_page, ".//head/script[2]") %>% xml_text()
+txt <- xml_find_all(dash_page, ".//head/script[3]") %>% xml_text()
 ct$eval(src = txt)
 
 cgender <- ct$get("cgender.chart.data")
